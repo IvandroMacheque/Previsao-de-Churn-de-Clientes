@@ -12,6 +12,7 @@ with st.sidebar:
     st.header('Options')
     options = st.selectbox("Modo", ['Prever Cliente', 'Clientes Previstos'])
     st.markdown("### 🔗 Links Úteis")
+    st.markdown("[📁 Este Projeto](https://github.com/IvandroMacheque/Previsao-de-Churn-de-Clientes.git)")
     st.markdown("[👨‍💻 Meu GitHub](https://github.com/IvandroMacheque/IvandroMacheque.git)")
     st.markdown("[💼 Meu LinkedIn](https://www.linkedin.com/in/ivandromacheque?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)")
     
