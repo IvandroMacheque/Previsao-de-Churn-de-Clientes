@@ -4,4 +4,4 @@ pandas
 pickle
 seaborn
 matplotlib
-scikit learn
+scikit-learn
