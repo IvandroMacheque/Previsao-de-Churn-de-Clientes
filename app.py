@@ -11,7 +11,10 @@ with open("forest_treinado.pkl", "rb") as f:
 with st.sidebar:
     st.header('Options')
     options = st.selectbox("Modo", ['Prever Cliente', 'Clientes Previstos'])
-    st.markdown("Veja mais no [meu portfólio de projetos](https://github.com/IvandroMacheque/IvandroMacheque.git)")
+    st.markdown("### 🔗 Links Úteis")
+    st.markdown("[👨‍💻 Meu GitHub](https://github.com/IvandroMacheque/IvandroMacheque.git)")
+    st.markdown("[💼 Meu LinkedIn](https://www.linkedin.com/in/ivandromacheque?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)")
+    
 
 # criando historico de clientes previstos
 if "historico" not in st.session_state:
