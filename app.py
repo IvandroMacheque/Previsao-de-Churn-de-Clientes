@@ -197,7 +197,7 @@ if options == 'Prever Cliente':
                              )
                          }, hide_index=True)
             if previsao == 1:
-                st.error("Este cliente esta propenso a sair!⚠")
+                st.error("Este cliente está propenso a sair!⚠")
             else:
                 st.success("Este cliente provavelmente premanecerá!✅")
         
