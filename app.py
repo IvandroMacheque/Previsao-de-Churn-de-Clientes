@@ -265,18 +265,26 @@ else:
                 st.write("### Predicted Data")
                 st.dataframe(dados_inseridos)
         previsao_container = st.container()
+        # botao de previsao
         if st.session_state.mostrar_botao1:
             st.button("Realizar Previsão", on_click=previsao_CSV)
-        
+
+        # converter arquivo
         def converter(df):
             df = pd.DataFrame()
             return df.to_csv(index=False).encode("utf-8")
+        # remover botao de download
+        def remover_but():
+            st.session_state.mostrar_botao2 = False
+            st.success("✅ Download realizado com sucesso!")
+        # botao de download
         if st.session_state.mostrar_botao2:
             arquivo = converter(dados_inseridos)
             st.download_button(
                 label="Download Data",
                 data=arquivo,
                 file_name='Predicted Data.csv',
-                mime='text/csv'
+                mime='text/csv',
+                on_click=remover_but
                 )
 
