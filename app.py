@@ -264,4 +264,16 @@ else:
         previsao_container = st.container()
         if st.session_state.mostrar_botao:
             st.button("Realizar Previsão", on_click=previsao_CSV)
+        else:
+            def converter(df):
+                df = pd.DataFrame()
+                return df.to_csv(index=False).encode("utf-8")
+            
+            arquivo = converter(dados_inseridos)
+            st.download_button(
+                label="Download Data",
+                data=arquivo,
+                file_name='Predicted Data.csv',
+                mime='text/csv'
+            )
 
