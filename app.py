@@ -241,7 +241,10 @@ else:
         dados_inseridos = pd.read_csv(uploaded_file)
         dados_inseridos = dados_inseridos.drop(columns='Unnamed: 0')
         st.dataframe(dados_inseridos)
-        previsao_CSV = modelo.predict(dados_inseridos)
-        dados_inseridos['Churn'] = previsao_CSV
-        st.dataframe(dados_inseridos)
+        def previsao_CSV():
+            previsao_CSV = modelo.predict(dados_inseridos)
+            dados_inseridos['Churn'] = previsao_CSV
+            dados_inseridos['Churn'] = dados_inseridos['Churn'].replace({0: 'No', 1: 'Yes'})
+            st.dataframe(dados_inseridos)
+        st.button("Realizar Previsão", on_click=previsao_CSV)
 
