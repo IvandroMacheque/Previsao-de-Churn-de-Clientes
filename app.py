@@ -240,10 +240,12 @@ elif options == 'Clientes Previstos':
 else:
     st.title("🗂 Prediction from CSV")
 
-    # inicializando o estado do botao
-    if 'mostrar_botao' not in st.session_state:
-        st.session_state.mostrar_botao = True
-
+    # inicializando os estados dos botoes
+    if 'mostrar_botao1' not in st.session_state:
+        st.session_state.mostrar_botao1 = False
+    if 'mostrar_botao2' not in st.session_state:
+        st.session_state.mostrar_botao2 = False
+    
     # subindo o arquivo
     uploaded_file = st.file_uploader("Escolha um arquivo CSV")
     # lendo e exibindo o arquivo
@@ -254,7 +256,7 @@ else:
 
         # realizando a previsao
         def previsao_CSV():
-            st.session_state.mostrar_botao = False
+            st.session_state.mostrar_botao1 = True
             previsao_CSV = modelo.predict(dados_inseridos)
             dados_inseridos['Churn'] = previsao_CSV
             dados_inseridos['Churn'] = dados_inseridos['Churn'].replace({0: 'No', 1: 'Yes'})
@@ -262,18 +264,18 @@ else:
                 st.write("### Predicted Data")
                 st.dataframe(dados_inseridos)
         previsao_container = st.container()
-        if st.session_state.mostrar_botao:
+        if not st.session_state.mostrar_botao1:
             st.button("Realizar Previsão", on_click=previsao_CSV)
-        else:
-            def converter(df):
-                df = pd.DataFrame()
-                return df.to_csv(index=False).encode("utf-8")
-            
+        
+        def converter(df):
+            df = pd.DataFrame()
+            return df.to_csv(index=False).encode("utf-8")
+        if st.session_state.mostrar_botao1 and not st.session_state.mostrar_botao2:   
             arquivo = converter(dados_inseridos)
             st.download_button(
                 label="Download Data",
                 data=arquivo,
                 file_name='Predicted Data.csv',
                 mime='text/csv'
-            )
+                )
 
