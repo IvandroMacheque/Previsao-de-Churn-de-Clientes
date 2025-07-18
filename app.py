@@ -262,6 +262,6 @@ else:
                 st.write("### Predicted Data")
                 st.dataframe(dados_inseridos)
         previsao_container = st.container()
-        if st.session_state.mostar_botao:
+        if st.session_state.mostrar_botao:
             st.button("Realizar Previsão", on_click=previsao_CSV)
 
