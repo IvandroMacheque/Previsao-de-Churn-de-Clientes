@@ -274,9 +274,9 @@ else:
             df = pd.DataFrame()
             return df.to_csv(index=False).encode("utf-8")
         # remover botao de download
-        with success_container:
-            def remover_but():
-                st.session_state.mostrar_botao2 = False
+        def remover_but():
+            st.session_state.mostrar_botao2 = False
+            with success_container:
                 st.success("✅ Download realizado com sucesso!")
         # botao de download
         success_container = st.container()
