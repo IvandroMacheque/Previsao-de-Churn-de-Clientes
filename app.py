@@ -238,5 +238,5 @@ else:
     uploaded_file = st.file_uploader("Escolha um arquivo CSV")
     if uploaded_file is not None:
         dados_inseridos = pd.read_csv(uploaded_file)
-    st.dataframe(dados_inseridos)
+        st.dataframe(dados_inseridos)
 
