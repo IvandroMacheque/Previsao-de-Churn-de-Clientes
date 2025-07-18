@@ -244,7 +244,7 @@ else:
     if 'mostrar_botao1' not in st.session_state:
         st.session_state.mostrar_botao1 = True
     if 'mostrar_botao2' not in st.session_state:
-        st.session_state.mostrar_botao2 = True
+        st.session_state.mostrar_botao2 = False
     
     # subindo o arquivo
     uploaded_file = st.file_uploader("Escolha um arquivo CSV")
