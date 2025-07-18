@@ -10,7 +10,7 @@ with open("forest_treinado.pkl", "rb") as f:
 # side bar
 with st.sidebar:
     st.header('Options')
-    options = st.selectbox("Modo", ['Prever Cliente', 'Clientes Previstos'])
+    options = st.selectbox("Modo", ['Prever Cliente', 'Clientes Previstos', 'Subir CSV'])
     st.markdown("### 🔗 Links Úteis")
     st.markdown("[📁 Este Projeto](https://github.com/IvandroMacheque/Previsao-de-Churn-de-Clientes.git)")
     st.markdown("[👨‍💻 Meu GitHub](https://github.com/IvandroMacheque/IvandroMacheque.git)")
@@ -21,6 +21,7 @@ with st.sidebar:
 if "historico" not in st.session_state:
     st.session_state.historico = pd.DataFrame()
 
+# opcao de prever clientes
 if options == 'Prever Cliente':
     st.title("🤖 Churn Telecomunication Predict")
     # perfil
@@ -206,7 +207,7 @@ if options == 'Prever Cliente':
     resultado_container = st.container()
     st.button("Prever", type="primary", on_click=prever)
 
-else:
+elif Options == 'Clientes Previstos':
     st.title("📜 Predicted Client's")
 
     st.dataframe(st.session_state.historico) # exibindo o historico
@@ -233,3 +234,9 @@ else:
                 file_name='Clientes Previstos.csv',
                 mime='text/csv'
             )
+else:
+    uploaded_file = st.file_uploader("Escolha um arquivo CSV")
+    if uploaded_file is not None:
+        dados_inseridos = pd.read_csv(uploaded_file)
+    dados_inseridos
+
