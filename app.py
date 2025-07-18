@@ -167,7 +167,6 @@ if options == 'Prever Cliente':
             'TotalCharges': totalcharges,}
         df_final = pd.DataFrame(df, index=[0])
 
-        st.session_state.historico = pd.concat([st.session_state.historico, df_final], ignore_index=True) # concatenando o cliente previsto ao historico
 
         # realizando a previsao
         previsao = modelo.predict(input_data)
@@ -176,8 +175,10 @@ if options == 'Prever Cliente':
         data_previsao.columns = ['No', 'Yes']
         data_previsao.rename(columns={0: 'No',
                                       1: 'Yes'})
-        st.session_state.historico['Churn'] = previsao_CSV
-        st.session_state.historico['Churn'] = st.session_state.historico['Churn'].replace({0: 'No', 1: 'Yes'})
+        df_final['Churn'] = previsao
+        df_final['Churn'] = df_final['Churn'].replace({0: 'No', 1: 'Yes'})
+
+        st.session_state.historico = pd.concat([st.session_state.historico, df_final], ignore_index=True) # concatenando o cliente previsto ao historico
 
         # exibicao do resultado
         with resultado_container:
