@@ -239,12 +239,22 @@ elif options == 'Clientes Previstos':
             )
 else:
     st.title("🗂 Prediction from CSV")
+
+    # inicializando o estado do botao
+    if 'mostrar_botao' not in st.session_state:
+        st.session_state.mostrar_botao = True
+
+    # subindo o arquivo
     uploaded_file = st.file_uploader("Escolha um arquivo CSV")
+    # lendo e exibindo o arquivo
     if uploaded_file is not None:
         dados_inseridos = pd.read_csv(uploaded_file)
         dados_inseridos = dados_inseridos.drop(columns='Unnamed: 0')
         st.dataframe(dados_inseridos)
+
+        # realizando a previsao
         def previsao_CSV():
+            st.session_state.mostrar_botao = False
             previsao_CSV = modelo.predict(dados_inseridos)
             dados_inseridos['Churn'] = previsao_CSV
             dados_inseridos['Churn'] = dados_inseridos['Churn'].replace({0: 'No', 1: 'Yes'})
@@ -252,5 +262,6 @@ else:
                 st.write("### Predicted Data")
                 st.dataframe(dados_inseridos)
         previsao_container = st.container()
-        st.button("Realizar Previsão", on_click=previsao_CSV)
+        if st.session_state.mostar_botao:
+            st.button("Realizar Previsão", on_click=previsao_CSV)
 
