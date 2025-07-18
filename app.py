@@ -235,8 +235,12 @@ elif options == 'Clientes Previstos':
                 mime='text/csv'
             )
 else:
+    st.title("🗂 Prediction from CSV")
     uploaded_file = st.file_uploader("Escolha um arquivo CSV")
     if uploaded_file is not None:
         dados_inseridos = pd.read_csv(uploaded_file)
+        st.dataframe(dados_inseridos)
+        previsao_CSV = modelo.predict(dados_inseridos)
+        dados_inseridos['Churn'] = previsao_CSV
         st.dataframe(dados_inseridos)
 
