@@ -176,6 +176,8 @@ if options == 'Prever Cliente':
         data_previsao.columns = ['No', 'Yes']
         data_previsao.rename(columns={0: 'No',
                                       1: 'Yes'})
+        st.session_state.historico['Churn'] = previsao_CSV
+        st.session_state.historico['Churn'] = st.session_state.historico['Churn'].replace({0: 'No', 1: 'Yes'})
 
         # exibicao do resultado
         with resultado_container:
@@ -245,6 +247,9 @@ else:
             previsao_CSV = modelo.predict(dados_inseridos)
             dados_inseridos['Churn'] = previsao_CSV
             dados_inseridos['Churn'] = dados_inseridos['Churn'].replace({0: 'No', 1: 'Yes'})
-            st.dataframe(dados_inseridos)
+            with previsao_container:
+                st.write("### Predicted Data")
+                st.dataframe(dados_inseridos)
+        previsao_container = st.container()
         st.button("Realizar Previsão", on_click=previsao_CSV)
 
