@@ -242,7 +242,7 @@ else:
 
     # inicializando os estados dos botoes
     if 'mostrar_botao1' not in st.session_state:
-        st.session_state.mostrar_botao1 = False
+        st.session_state.mostrar_botao1 = True
     if 'mostrar_botao2' not in st.session_state:
         st.session_state.mostrar_botao2 = False
     
@@ -256,7 +256,8 @@ else:
 
         # realizando a previsao
         def previsao_CSV():
-            st.session_state.mostrar_botao1 = True
+            st.session_state.mostrar_botao1 = False
+            st.session_state.mostrar_botao2 = True
             previsao_CSV = modelo.predict(dados_inseridos)
             dados_inseridos['Churn'] = previsao_CSV
             dados_inseridos['Churn'] = dados_inseridos['Churn'].replace({0: 'No', 1: 'Yes'})
@@ -264,13 +265,13 @@ else:
                 st.write("### Predicted Data")
                 st.dataframe(dados_inseridos)
         previsao_container = st.container()
-        if not st.session_state.mostrar_botao1:
+        if st.session_state.mostrar_botao1:
             st.button("Realizar Previsão", on_click=previsao_CSV)
         
         def converter(df):
             df = pd.DataFrame()
             return df.to_csv(index=False).encode("utf-8")
-        if st.session_state.mostrar_botao1 and not st.session_state.mostrar_botao2:   
+        if st.session_state.mostrar_botao2:
             arquivo = converter(dados_inseridos)
             st.download_button(
                 label="Download Data",
