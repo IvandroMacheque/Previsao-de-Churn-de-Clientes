@@ -274,10 +274,12 @@ else:
             df = pd.DataFrame()
             return df.to_csv(index=False).encode("utf-8")
         # remover botao de download
-        def remover_but():
-            st.session_state.mostrar_botao2 = False
-            st.success("✅ Download realizado com sucesso!")
+        # with success_container:
+        #     def remover_but():
+        #         st.session_state.mostrar_botao2 = False
+        #         st.success("✅ Download realizado com sucesso!")
         # botao de download
+        success_container = st.container()
         if st.session_state.mostrar_botao2:
             arquivo = converter(dados_inseridos)
             st.download_button(
@@ -285,6 +287,5 @@ else:
                 data=arquivo,
                 file_name='Predicted Data.csv',
                 mime='text/csv',
-                on_click=remover_but
                 )
 
