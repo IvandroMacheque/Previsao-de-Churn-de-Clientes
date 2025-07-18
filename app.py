@@ -207,7 +207,7 @@ if options == 'Prever Cliente':
     resultado_container = st.container()
     st.button("Prever", type="primary", on_click=prever)
 
-elif Options == 'Clientes Previstos':
+elif options == 'Clientes Previstos':
     st.title("📜 Predicted Client's")
 
     st.dataframe(st.session_state.historico) # exibindo o historico
