@@ -278,7 +278,7 @@ else:
             def remover_but():
                 st.session_state.mostrar_botao2 = False
                 st.success("✅ Download realizado com sucesso!")
-        botao de download
+        # botao de download
         success_container = st.container()
         if st.session_state.mostrar_botao2:
             arquivo = converter(dados_inseridos)
