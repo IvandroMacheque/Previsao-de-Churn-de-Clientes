@@ -209,7 +209,7 @@ if options == 'Prever Cliente':
         
     # botao de previsao
     resultado_container = st.container()
-    st.button("Prever", type="primary", on_click=prever)
+    st.button("Realizar Previsão", type="primary", on_click=prever)
 
 elif options == 'Clientes Previstos':
     st.title("📜 Predicted Client's")
