@@ -24,8 +24,9 @@ if "historico" not in st.session_state:
 # opcao de prever clientes
 if options == 'Prever Cliente':
     st.title("🤖 Churn Telecomunication Predict")
+    st.write("## Insira os Dados do Cliente")
     # perfil
-    st.write("## Perfil:")
+    st.write("### Perfil:")
     col1, col2, col3 = st.columns(3)
     with col1:
         senior = st.selectbox("Cidadão Senior", ['Yes', 'No'])
@@ -37,7 +38,7 @@ if options == 'Prever Cliente':
     tenure = st.number_input("Tempo de Contrato(meses)")
 
     # servicos de internet
-    st.write("## Serviços de Internet:")
+    st.write("### Serviços de Internet:")
     internetservice = st.selectbox("Tipo de Serviço de Internet:", ['DSL', 'Fiber optic', 'No internet service'])
     col4, col5, col6 = st.columns(3)
     col7, col8, col9 = st.columns(3)
@@ -63,7 +64,7 @@ if options == 'Prever Cliente':
             streamingmovies = st.selectbox("Streaming Movies", ['Yes', 'No'])
 
     # Plano e Pagamento
-    st.write("## Plano e Pagamento:")
+    st.write("### Plano e Pagamento:")
     col10, col11 = st.columns(2)
     col12, col13, col14 = st.columns(3)
     with col10:
