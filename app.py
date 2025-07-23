@@ -220,9 +220,10 @@ elif options == 'Clientes Previstos':
     but1, but2 = st.columns(2)
     # funcao para limpar o historico
     with but1:
-        def limpar():
-            st.session_state.historico = pd.DataFrame()
-        st.button("Limpar histórico", on_click=limpar)
+        if not st.session_state.historico.empty:
+            def limpar():
+                st.session_state.historico = pd.DataFrame()
+            st.button("Limpar histórico", on_click=limpar)
 
     # funcao para salvar o historico
     with but2:
