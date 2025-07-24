@@ -85,3 +85,7 @@ A aplicação possui uma barra lateral com três modos de operação:
  - Neste último modo, o usuário pode subir um arquivo csv (que esteja limpado e organizado) para realizar a previsão do dataset.
 
  - Após a previsão, tem a possibilidade de salvar o arquivo com as previsões em formato CSV.
+
+# Link da Aplicação
+
+https://previsao-de-churn-de-clientes.streamlit.app/
