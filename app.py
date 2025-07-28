@@ -15,8 +15,8 @@ with st.sidebar:
     st.markdown("[📁 Este Projeto](https://github.com/IvandroMacheque/Previsao-de-Churn-de-Clientes.git)")
     st.markdown("[👨‍💻 Meu GitHub](https://github.com/IvandroMacheque/IvandroMacheque.git)")
     st.markdown("[💼 Meu LinkedIn](https://www.linkedin.com/in/ivandromacheque?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)")
+    st.markdown("[🗂️ Outros Projetos](https://machequeivandro.notion.site/21c3f356a4b180d3a221ede7e8f1a0a3)")
     
-
 # criando historico de clientes previstos
 if "historico" not in st.session_state:
     st.session_state.historico = pd.DataFrame()
