@@ -1,11 +1,10 @@
 import streamlit as st
 import pandas as pd
-import pickle
+from joblib import load
 import numpy as np
 
 # importar o modelo
-with open("forest_treinado.pkl", "rb") as f:
-    modelo = pickle.load(f)
+modelo = load('modelo_forest_comprimido.joblib')
 
 # side bar
 with st.sidebar:
@@ -270,5 +269,6 @@ else:
                 mime='text/csv',
                 on_click=remover_but
                 )
+
 
 
