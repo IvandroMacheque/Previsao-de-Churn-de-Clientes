@@ -79,7 +79,6 @@ if options == 'Prever Cliente':
         'StreamingTV': streamingtv,
         'StreamingMovies': streamingmovies,
         'Contract': contract,
-        'PaperlessBilling': paperlessbilling,
         'MonthlyCharges': monthlycharges,
         'TotalCharges': totalcharges,}
     input_data = pd.DataFrame(data, index=[0])
@@ -269,6 +268,7 @@ else:
                 mime='text/csv',
                 on_click=remover_but
                 )
+
 
 
 
