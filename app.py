@@ -27,13 +27,6 @@ if options == 'Prever Cliente':
     st.write("## Insira os Dados do Cliente")
     # perfil
     st.write("### Perfil:")
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        senior = st.selectbox("Cidadão Senior", ['Yes', 'No'])
-    with col2:
-        partner = st.selectbox("Possui parceiro", ["Yes", "No"])
-    with col3:
-        dependentes = st.selectbox("Dependentes?", ['Yes', 'No'])
 
     tenure = st.number_input("Tempo de Contrato(meses)")
 
@@ -66,7 +59,7 @@ if options == 'Prever Cliente':
     # Plano e Pagamento
     st.write("### Plano e Pagamento:")
     col10, col11 = st.columns(2)
-    col12, col13, col14 = st.columns(3)
+    col12, col13 = st.columns(2)
     with col10:
         contract = st.selectbox("Contrato", ['Month-to-month', 'One year', 'Two year'])
     with col11:
@@ -75,14 +68,9 @@ if options == 'Prever Cliente':
         monthlycharges = st.number_input("Cobranças Mensais (R$)")
     with col13:
         totalcharges = st.number_input("Cobranças Totais (R$)")
-    with col14:
-        paperlessbilling = st.selectbox("Faturamento sem Papel", ['Yes', 'No'])
 
     # dados inseridos
     data = {
-        'SeniorCitizen': senior,
-        'Partner': partner,
-        'Dependents': dependentes,
         'tenure' : tenure,
         'InternetService': internetservice,
         'OnlineSecurity': onlinesecurity,
@@ -93,7 +81,6 @@ if options == 'Prever Cliente':
         'StreamingMovies': streamingmovies,
         'Contract': contract,
         'PaperlessBilling': paperlessbilling,
-        'PaymentMethod': paymentmethod,
         'MonthlyCharges': monthlycharges,
         'TotalCharges': totalcharges,}
     input_data = pd.DataFrame(data, index=[0])
@@ -115,10 +102,6 @@ if options == 'Prever Cliente':
     input_data['DeviceProtection'] = input_data['DeviceProtection'].map(mod)
     input_data['TechSupport'] = input_data['TechSupport'].map(mod)
     input_data['OnlineSecurity'] = input_data['OnlineSecurity'].map(mod)
-    input_data['Partner'] = input_data['Partner'].map(mod2)
-    input_data['Dependents'] = input_data['Dependents'].map(mod2)
-    input_data['PaperlessBilling'] = input_data['PaperlessBilling'].map(mod2)
-    input_data['SeniorCitizen'] = input_data['SeniorCitizen'].map(mod2)
     input_data['Contract'] = input_data['Contract'].map({'Month-to-month': 0, 'One year': 1, 'Two year': 2})
     input_data['TotalCharges_Category'] = input_data['TotalCharges_Category'].map({'baixo': 0, 'medio': 1, 'alto': 2})
 
@@ -150,9 +133,6 @@ if options == 'Prever Cliente':
 
         # dataframe do cliente previsto
         df = {
-            'SeniorCitizen': senior,
-            'Partner': partner,
-            'Dependents': dependentes,
             'tenure' : tenure,
             'InternetService': internetservice,
             'OnlineSecurity': onlinesecurity,
@@ -162,7 +142,6 @@ if options == 'Prever Cliente':
             'StreamingTV': streamingtv,
             'StreamingMovies': streamingmovies,
             'Contract': contract,
-            'PaperlessBilling': paperlessbilling,
             'PaymentMethod': paymentmethod,
             'MonthlyCharges': monthlycharges,
             'TotalCharges': totalcharges,}
@@ -291,4 +270,5 @@ else:
                 mime='text/csv',
                 on_click=remover_but
                 )
+
 
