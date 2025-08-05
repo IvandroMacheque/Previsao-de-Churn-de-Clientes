@@ -251,7 +251,6 @@ else:
 
         # converter arquivo
         def converter(df):
-            df = pd.DataFrame()
             return df.to_csv(index=False).encode("utf-8")
         # remover botao de download
         def remover_but():
@@ -269,6 +268,7 @@ else:
                 mime='text/csv',
                 on_click=remover_but
                 )
+
 
 
 
