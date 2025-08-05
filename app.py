@@ -207,7 +207,6 @@ elif options == 'Clientes Previstos':
     with but2:
         if not st.session_state.historico.empty:
             def convert_for_download(df):
-                df = pd.DataFrame()
                 return df.to_csv(index=False).encode("utf-8")
             
             file = convert_for_download(st.session_state.historico)
@@ -268,6 +267,7 @@ else:
                 mime='text/csv',
                 on_click=remover_but
                 )
+
 
 
 
